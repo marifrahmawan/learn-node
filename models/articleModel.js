@@ -6,12 +6,16 @@ const articleSchema = new Schema(
       type: String,
       require: true,
     },
-    author: {
-      userId: {
-        type: Schema.Types.ObjectId,
-      },
+    creator: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
     },
-    articleText: {
+    content: {
+      type: String,
+      required: true,
+    },
+    imageUrl: {
       type: String,
       required: true,
     },
@@ -21,4 +25,4 @@ const articleSchema = new Schema(
   }
 );
 
-module.exports = Article = mongoose.model('article', articleSchema);
+module.exports = mongoose.model('Article', articleSchema);
